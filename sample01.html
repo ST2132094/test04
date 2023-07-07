@@ -30,7 +30,7 @@
       const camera = new THREE.PerspectiveCamera(45, width / height);
 
       //球
-      var sphereGeometry = new THREE.SphereGeometry( 0.7, 32, 32 ); 
+      var sphereGeometry = new THREE.SphereGeometry( 10, 32, 32 ); 
       var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xff0000,wireframe: true} );
       var sphere1 = new THREE.Mesh( sphereGeometry, sphereMaterial );
       sphere1.position.set( 1.5, 0, -6 );
