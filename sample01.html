@@ -29,6 +29,13 @@
       // カメラを作成
       const camera = new THREE.PerspectiveCamera(45, width / height);
 
+      //球
+      var sphereGeometry = new THREE.SphereGeometry( 0.7, 32, 32 ); 
+      var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xff0000,wireframe: true} );
+      var sphere1 = new THREE.Mesh( sphereGeometry, sphereMaterial );
+      sphere1.position.set( 1.5, 0, -6 );
+      scene.add( sphere1 );
+
       // 星屑を作成します (カメラの動きをわかりやすくするため)
       createStarField();
 
@@ -80,10 +87,24 @@
         // 原点方向を見つめる
         camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+      // 平行光源1
+      var directionalLight1 = new THREE.DirectionalLight(0xffffff);
+      directionalLight1.position.set(1, 1, 1);
+      // シーンに追加
+      scene.add(directionalLight1);
+      // 平行光源2
+      var directionalLight2 = new THREE.DirectionalLight(0xffffff);
+      directionalLight2.position.set(-1, 1, 1);
+      // シーンに追加
+      scene.add(directionalLight2);
+
         // レンダリング
         renderer.render(scene, camera);
 
         requestAnimationFrame(tick);
+
+        sphere1.rotation.x -= 0.01;
+        sphere1.rotation.y -= 0.01;
       }
     </script>
   </head>
