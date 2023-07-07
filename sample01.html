@@ -34,12 +34,12 @@
 
       // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();  
-        var texture = textureLoader.load("sky.png");
+        var texture = textureLoader.load("earth.png");
         var mat = new THREE.MeshPhongMaterial();
         mat.map = texture;
 
       //球
-      var sphereGeometry = new THREE.SphereGeometry( 25, 32, 32 ); 
+      var sphereGeometry = new THREE.SphereGeometry( 20, 32, 32 ); 
       var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xff0000,wireframe: true} );
       var sphere1 = new THREE.Mesh( sphereGeometry, sphereMaterial );
       sphere1.position.set( 1.5, 0, -6 );
