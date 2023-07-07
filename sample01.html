@@ -29,8 +29,17 @@
       // カメラを作成
       const camera = new THREE.PerspectiveCamera(45, width / height);
 
+      // カメラコントローラーを作成
+      const controls = new THREE.OrbitControls(camera, document.body); 
+
+      // テクスチャー読み込み
+        var textureLoader = new THREE.TextureLoader();  
+        var texture = textureLoader.load("sky.png");
+        var mat = new THREE.MeshPhongMaterial();
+        mat.map = texture;
+
       //球
-      var sphereGeometry = new THREE.SphereGeometry( 10, 32, 32 ); 
+      var sphereGeometry = new THREE.SphereGeometry( 25, 32, 32 ); 
       var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xff0000,wireframe: true} );
       var sphere1 = new THREE.Mesh( sphereGeometry, sphereMaterial );
       sphere1.position.set( 1.5, 0, -6 );
@@ -98,14 +107,13 @@
       // シーンに追加
       scene.add(directionalLight2);
 
-        // レンダリング
-        renderer.render(scene, camera);
+      // レンダリング
+      renderer.render(scene, camera);
 
-       // requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
 
         sphere1.rotation.x -= 0.01;
         sphere1.rotation.y -= 0.01;
-        sphere1.position.z +=0.1;
       }
     </script>
   </head>
